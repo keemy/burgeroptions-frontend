@@ -29,6 +29,11 @@ const darkBorder = `1px solid ${theme.palette.background.main}`;
 
 const expirations = getLastFridayOfMonths(10);
 
+/**
+ * @deprecated
+ *
+ * Need to rewrite this page
+ */
 const Mint = () => {
   const { pushNotification } = useNotifications();
   const { connected } = useWallet();

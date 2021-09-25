@@ -2,7 +2,6 @@ import { Market } from '@mithraic-labs/serum';
 import { BN } from '@project-serum/anchor';
 import { Account, PublicKey, Transaction } from '@solana/web3.js';
 import BigNumber from 'bignumber.js';
-import { SerumMarket } from './utils/serum';
 
 export enum ClusterName {
   devnet = 'Devnet',

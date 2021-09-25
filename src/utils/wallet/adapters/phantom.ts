@@ -16,7 +16,7 @@ interface PhantomProvider {
   autoApprove?: boolean;
   signTransaction: (transaction: Transaction) => Promise<Transaction>;
   signAllTransactions: (transactions: Transaction[]) => Promise<Transaction[]>;
-  connect: ({ onlyIfTrusted: boolean }) => Promise<void>;
+  connect: ({ onlyIfTrusted }: { onlyIfTrusted: boolean }) => Promise<void>;
   disconnect: () => Promise<void>;
   on: (event: PhantomEvent, handler: (args: any) => void) => void;
   request: (method: PhantomRequestMethod, params: any) => Promise<any>;
@@ -64,7 +64,7 @@ class PhantomWalletAdapter extends EventEmitter implements WalletAdapter {
   }
 
   get publicKey() {
-    return this._provider?.publicKey;
+    return this._provider?.publicKey as PublicKey;
   }
 
   async signTransaction(transaction: Transaction) {
