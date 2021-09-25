@@ -6,3 +6,4 @@ serum/dex
 .DS_Store
 logs/
 tmp/
+.next/
