@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import Box from '@material-ui/core/Box';
 import { useTheme } from '@material-ui/core/styles';
 
@@ -18,7 +18,7 @@ const StepBar = ({ on }) => {
 };
 
 export const StepIndicator: React.FC = () => {
-  const { pathname } = useLocation();
+  const { pathname } = useRouter();
 
   let step = 1;
   if (pathname.match(/^\/simple\/up-or-down/)) {

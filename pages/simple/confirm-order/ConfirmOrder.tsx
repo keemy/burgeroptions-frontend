@@ -1,33 +1,34 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as Sentry from '@sentry/react';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import Box from '@material-ui/core/Box';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Button } from '@material-ui/core';
 import moment from 'moment';
-import ConnectButton from '../../../../ConnectButton';
-import {
-  useFormState,
-} from '../../../../../context/SimpleUIContext';
-import { SimpleUIPage } from '../../SimpeUIPage';
+import ConnectButton from '../../../src/components/ConnectButton';
+import { useFormState } from '../../../src/context/SimpleUIContext';
+import { SimpleUIPage } from '../../../src/components/SimpleUI/SimpeUIPage';
 import OrderDetails from './OrderDetails';
 import LabelledText from './LabelledText';
-import useWallet from '../../../../../hooks/useWallet';
-import useNotifications from '../../../../../hooks/useNotifications';
-import usePlaceBuyOrder from '../../../../../hooks/usePlaceBuyOrder';
-import { getHighestAccount } from '../../../../../utils/token';
-import useOwnedTokenAccounts from '../../../../../hooks/useOwnedTokenAccounts';
-import useFilteredOptionsChain from '../../../../../hooks/useFilteredOptionsChain';
-import useSerum from '../../../../../hooks/useSerum';
-import { useSerumOrderbooks } from '../../../../../context/SerumOrderbookContext';
-import useAssetList from '../../../../../hooks/useAssetList';
-import { useSerumFeeDiscountKey } from '../../../../../hooks/Serum/useSerumFeeDiscountKey';
-import { useOptionMarket } from '../../../../../hooks/useOptionMarket';
-import { calculatePriceWithSlippage } from '../../../../../utils/calculatePriceWithSlippage';
-import { calculateBreakevenForLimitOrder, calculateBreakevenForMarketOrder } from '../../../../../utils/calculateBreakeven';
+import useWallet from '../../../src/hooks/useWallet';
+import useNotifications from '../../../src/hooks/useNotifications';
+import usePlaceBuyOrder from '../../../src/hooks/usePlaceBuyOrder';
+import { getHighestAccount } from '../../../src/utils/token';
+import useOwnedTokenAccounts from '../../../src/hooks/useOwnedTokenAccounts';
+import useFilteredOptionsChain from '../../../src/hooks/useFilteredOptionsChain';
+import useSerum from '../../../src/hooks/useSerum';
+import { useSerumOrderbooks } from '../../../src/context/SerumOrderbookContext';
+import useAssetList from '../../../src/hooks/useAssetList';
+import { useSerumFeeDiscountKey } from '../../../src/hooks/Serum/useSerumFeeDiscountKey';
+import { useOptionMarket } from '../../../src/hooks/useOptionMarket';
+import { calculatePriceWithSlippage } from '../../../src/utils/calculatePriceWithSlippage';
+import {
+  calculateBreakevenForLimitOrder,
+  calculateBreakevenForMarketOrder,
+} from '../../../src/utils/calculateBreakeven';
 
 const ConfirmOrder = () => {
-  const history = useHistory();
+  const router = useRouter();
   const { connected, pubKey } = useWallet();
   const { uAsset, qAsset } = useAssetList();
   const { pushErrorNotification } = useNotifications();
@@ -44,13 +45,15 @@ const ConfirmOrder = () => {
     contractSize,
   } = useFormState();
   const [placeOrderLoading, setPlaceOrderLoading] = useState(false);
-  const { lowestAskHighestBidPerStrike, optionRowForStrike } = useFilteredOptionsChain(direction === 'down' ? 'put' : 'call');
+  const { lowestAskHighestBidPerStrike, optionRowForStrike } =
+    useFilteredOptionsChain(direction === 'down' ? 'put' : 'call');
   const optionRow = optionRowForStrike[strike];
   const serumAddress = optionRow?.serumMarketKey?.toString();
   const placeBuyOrder = usePlaceBuyOrder(serumAddress);
   const { serumMarkets } = useSerum();
   const [orderbooks] = useSerumOrderbooks();
-  const { feeRates: serumFeeRates, publicKey: serumDiscountFeeKey } = useSerumFeeDiscountKey();
+  const { feeRates: serumFeeRates, publicKey: serumDiscountFeeKey } =
+    useSerumFeeDiscountKey();
   const { ownedTokenAccounts } = useOwnedTokenAccounts();
   const optionMarket = useOptionMarket({
     date: expirationUnixTimestamp,
@@ -63,14 +66,22 @@ const ConfirmOrder = () => {
 
   const serumMarketData = serumMarkets[serumAddress];
   const serumMarket = serumMarketData?.serumMarket;
-  const optionAccounts = ownedTokenAccounts[`${optionRow?.optionMintKey}`] || [];
+  const optionAccounts =
+    ownedTokenAccounts[`${optionRow?.optionMintKey}`] || [];
   const orderbook = orderbooks[serumAddress];
 
   // If previous form state didn't exist, send user back to first page (choose asset)
   useEffect(() => {
-    if (!tokenSymbol || !direction || !expirationUnixTimestamp || !strike ||
-      !orderSize || !contractSize || (orderType === 'limit' && !limitPrice)) {
-      history.replace('/simple/choose-asset');
+    if (
+      !tokenSymbol ||
+      !direction ||
+      !expirationUnixTimestamp ||
+      !strike ||
+      !orderSize ||
+      !contractSize ||
+      (orderType === 'limit' && !limitPrice)
+    ) {
+      router.replace('/simple/choose-asset');
     }
   }, [
     tokenSymbol,
@@ -81,7 +92,7 @@ const ConfirmOrder = () => {
     orderType,
     limitPrice,
     contractSize,
-    history,
+    router,
   ]);
 
   useEffect(() => {
@@ -93,7 +104,7 @@ const ConfirmOrder = () => {
   }, [limitPrice, orderType, lowestAskHighestBidPerStrike, strike]);
 
   useEffect(() => {
-    let newBreakevenPrice: number | null = null
+    let newBreakevenPrice: number | null = null;
     if (orderType === 'limit') {
       newBreakevenPrice = calculateBreakevenForLimitOrder(
         strike,
@@ -112,12 +123,22 @@ const ConfirmOrder = () => {
     }
 
     setBreakeven(newBreakevenPrice);
-  }, [limitPrice, orderType, lowestAskHighestBidPerStrike, strike, contractSize, orderSize, direction, orderbook?.asks]);
+  }, [
+    limitPrice,
+    orderType,
+    lowestAskHighestBidPerStrike,
+    strike,
+    contractSize,
+    orderSize,
+    direction,
+    orderbook?.asks,
+  ]);
 
   const handlePlaceOrderClicked = async () => {
     setPlaceOrderLoading(true);
     try {
       const serumQuoteTokenAccounts =
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore: serum market._decoded
         ownedTokenAccounts[serumMarket._decoded.quoteMint.toString()] || [];
       const serumQuoteTokenKey = getHighestAccount(
@@ -165,61 +186,63 @@ const ConfirmOrder = () => {
 
   return (
     <SimpleUIPage title={'Confirm Order'}>
-      <Box
-        width='100%'
-        px={2}
-        py={1}
-        flexDirection='column'
-        display='flex'
-      >
+      <Box width="100%" px={2} py={1} flexDirection="column" display="flex">
         <OrderDetails
-          side='buy'
+          side="buy"
           callOrPut={direction === 'up' ? 'call' : 'put'}
           contractSize={contractSize}
           orderSize={orderSize}
         />
-        <Box
-          width='100%'
-          py={2}
-          flexDirection='column'
-          display='flex'
-        >
+        <Box width="100%" py={2} flexDirection="column" display="flex">
           <Box paddingBottom={1}>
-            <LabelledText title={moment.unix(expirationUnixTimestamp).format('MMMM Do YYYY')} subtitle="Expiration" />
+            <LabelledText
+              title={moment
+                .unix(expirationUnixTimestamp)
+                .format('MMMM Do YYYY')}
+              subtitle="Expiration"
+            />
           </Box>
           <Box paddingBottom={1}>
             <LabelledText title={`$${strike.toString()}`} subtitle="Strike" />
           </Box>
           <Box paddingBottom={1}>
-          <LabelledText title={cost ? `$${cost.toString()}` : '-'} subtitle="Cost" />
+            <LabelledText
+              title={cost ? `$${cost.toString()}` : '-'}
+              subtitle="Cost"
+            />
           </Box>
           <Box paddingBottom={1}>
-            <LabelledText title={breakeven ? `$${breakeven.toString()}` : '-'} subtitle="Breakeven" />
+            <LabelledText
+              title={breakeven ? `$${breakeven.toString()}` : '-'}
+              subtitle="Breakeven"
+            />
           </Box>
         </Box>
         <Box
-          width='100%'
+          width="100%"
           py={2}
-          flexDirection='column'
-          display='flex'
-          alignItems='center'
+          flexDirection="column"
+          display="flex"
+          alignItems="center"
         >
           {!connected ? (
-              <ConnectButton fullWidth>Connect Wallet</ConnectButton>
-            ) : placeOrderLoading ? (
-              <CircularProgress />
-            ) : (<Button
-            color='primary'
-            onClick={handlePlaceOrderClicked}
-            variant='outlined'
-            style={{ width: '100%' }}
-          >
-            Place Order
-          </Button>)}
+            <ConnectButton fullWidth>Connect Wallet</ConnectButton>
+          ) : placeOrderLoading ? (
+            <CircularProgress />
+          ) : (
+            <Button
+              color="primary"
+              onClick={handlePlaceOrderClicked}
+              variant="outlined"
+              style={{ width: '100%' }}
+            >
+              Place Order
+            </Button>
+          )}
         </Box>
       </Box>
     </SimpleUIPage>
   );
 };
 
-export default memo(ConfirmOrder);
+export default ConfirmOrder;

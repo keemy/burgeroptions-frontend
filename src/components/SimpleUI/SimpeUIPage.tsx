@@ -3,8 +3,8 @@ import Box from '@material-ui/core/Box';
 
 import type { ReactNode } from 'react';
 
-import StatusBar from '../../StatusBar';
-import Notifications from '../../Notifications';
+import StatusBar from '../StatusBar';
+import Notifications from '../Notifications';
 import StepIndicator from './SimpleUIStepIndicator';
 
 const pageBg =

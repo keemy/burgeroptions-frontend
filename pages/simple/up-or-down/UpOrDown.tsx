@@ -1,5 +1,5 @@
-import React, { memo, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import ArrowUpward from '@material-ui/icons/ArrowUpward';
@@ -8,9 +8,9 @@ import { useTheme } from '@material-ui/core/styles';
 import {
   useUpdateForm,
   useFormState,
-} from '../../../../context/SimpleUIContext';
+} from '../../../src/context/SimpleUIContext';
 
-import { SimpleUIPage } from '../SimpeUIPage';
+import { SimpleUIPage } from '../../../src/components/SimpleUI/SimpeUIPage';
 
 const UpOrDownButton = ({ selected, onClick, direction }) => {
   const theme = useTheme();
@@ -53,15 +53,15 @@ const UpOrDownButton = ({ selected, onClick, direction }) => {
 const UpOrDown = () => {
   const { tokenSymbol } = useFormState();
   const updateForm = useUpdateForm();
-  const history = useHistory();
+  const router = useRouter();
   const [selectedDirection, setSelectedDirection] = useState('');
 
   // If previous form state didn't exist, send user back to first page (choose asset)
   useEffect(() => {
     if (!tokenSymbol) {
-      history.replace('/simple/choose-asset');
+      router.replace('/simple/choose-asset');
     }
-  }, [tokenSymbol, history]);
+  }, [tokenSymbol, router]);
 
   const handleMakeSelection = (direction) => {
     if (!selectedDirection) {
@@ -70,7 +70,7 @@ const UpOrDown = () => {
 
       // TODO: animated transition between pages instead of a timeout
       setTimeout(() => {
-        history.push('/simple/choose-expiration');
+        router.push('/simple/choose-expiration');
       }, 500);
     }
   };
@@ -106,4 +106,4 @@ const UpOrDown = () => {
   );
 };
 
-export default memo(UpOrDown);
+export default UpOrDown;

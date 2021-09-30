@@ -1,19 +1,19 @@
-import React, { memo, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import { useTheme } from '@material-ui/core/styles';
 import { Token } from '@mithraic-labs/market-meta/dist/types';
-import useAssetList from '../../../../hooks/useAssetList';
-import { useSerumPriceByAssets } from '../../../../hooks/Serum/useSerumPriceByAssets';
-import { useUpdateForm } from '../../../../context/SimpleUIContext';
-import { SimpleUIPage } from '../SimpeUIPage';
+import useAssetList from '../../../src/hooks/useAssetList';
+import { useSerumPriceByAssets } from '../../../src/hooks/Serum/useSerumPriceByAssets';
+import { useUpdateForm } from '../../../src/context/SimpleUIContext';
+import { SimpleUIPage } from '../../../src/components/SimpleUI/SimpeUIPage';
 
 type ChooseAssetButtonProps = {
-  asset: Token,
-  selected: boolean,
-  onClick: () => void,
+  asset: Token;
+  selected: boolean;
+  onClick: () => void;
 };
 
 const ChooseAssetButton = ({
@@ -26,7 +26,7 @@ const ChooseAssetButton = ({
 
   const price = useSerumPriceByAssets(
     asset.mintAddress,
-    USDCToken.mintAddress,
+    USDCToken?.mintAddress,
   );
 
   return (
@@ -68,7 +68,9 @@ const ChooseAssetButton = ({
           </Box>
           <Box p={1}>{asset.tokenSymbol}</Box>
         </Box>
-        <Box p={1}>{(price && price > 0 && `$${price.toFixed(2)}`) || 'Loading...'}</Box>
+        <Box p={1}>
+          {(price && price > 0 && `$${price.toFixed(2)}`) || 'Loading...'}
+        </Box>
       </Box>
     </Button>
   );
@@ -76,7 +78,7 @@ const ChooseAssetButton = ({
 
 const ChooseAnAsset = () => {
   const updateForm = useUpdateForm();
-  const history = useHistory();
+  const router = useRouter();
   const { supportedAssets, setUAsset } = useAssetList();
   const assetWhitelist = ['SOL', 'BTC', 'ETH'];
   const [selectedTokenSymbol, setSelectedTokenSymbol] = useState('');
@@ -93,7 +95,7 @@ const ChooseAnAsset = () => {
 
       // TODO: animated transition between pages instead of a timeout
       setTimeout(() => {
-        history.push('/simple/up-or-down')
+        router.push('/simple/up-or-down');
       }, 500);
     }
   };
@@ -115,4 +117,4 @@ const ChooseAnAsset = () => {
   );
 };
 
-export default memo(ChooseAnAsset);
+export default ChooseAnAsset;

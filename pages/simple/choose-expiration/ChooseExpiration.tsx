@@ -1,5 +1,5 @@
-import React, { memo, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { useTheme } from '@material-ui/core/styles';
@@ -7,11 +7,11 @@ import moment from 'moment';
 import {
   useUpdateForm,
   useFormState,
-} from '../../../../context/SimpleUIContext';
-import useExpirationDate from '../../../../hooks/useExpirationDate';
-import useOptionsChain from '../../../../hooks/useOptionsChain';
+} from '../../../src/context/SimpleUIContext';
+import useExpirationDate from '../../../src/hooks/useExpirationDate';
+import useOptionsChain from '../../../src/hooks/useOptionsChain';
 
-import { SimpleUIPage } from '../SimpeUIPage';
+import { SimpleUIPage } from '../../../src/components/SimpleUI/SimpeUIPage';
 
 const ChooseDateButton = ({ date, selected, onClick }) => {
   const theme = useTheme();
@@ -50,16 +50,16 @@ const ChooseExpiration = () => {
   const { selectedDate, setSelectedDate, dates } = useExpirationDate();
   const { tokenSymbol, direction, contractSize } = useFormState();
   const updateForm = useUpdateForm();
-  const history = useHistory();
+  const router = useRouter();
   const [selectedExpiration, setSelectedExpiration] = useState(0);
   const { buildOptionsChain } = useOptionsChain();
 
   // If previous form state didn't exist, send user back to first page (choose asset)
   useEffect(() => {
     if (!tokenSymbol || !direction) {
-      history.replace('/simple/choose-asset');
+      router.replace('/simple/choose-asset');
     }
-  }, [tokenSymbol, direction, history]);
+  }, [tokenSymbol, direction, router]);
 
   useEffect(() => {
     if (selectedDate) {
@@ -75,7 +75,7 @@ const ChooseExpiration = () => {
 
       // TODO: animated transition between pages instead of a timeout
       setTimeout(() => {
-        history.push('/simple/choose-strike');
+        router.push('/simple/choose-strike');
       }, 500);
     }
   };
@@ -104,4 +104,4 @@ const ChooseExpiration = () => {
   );
 };
 
-export default memo(ChooseExpiration);
+export default ChooseExpiration;
