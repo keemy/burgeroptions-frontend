@@ -3,9 +3,9 @@ import { useRouter } from 'next/router';
 import Box from '@material-ui/core/Box';
 import { useTheme } from '@material-ui/core/styles';
 
-const StepBar = ({ on }) => {
+const StepBar: React.VFC<{ on: boolean }> = ({ on }) => {
   const theme = useTheme();
-  const { primary, background } = theme?.palette as any;
+  const { primary, background } = theme?.palette;
 
   return (
     <Box

@@ -4,18 +4,18 @@ import CreateIcon from '@material-ui/icons/Create';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import { useTheme } from '@material-ui/core/styles';
 
-import TabCustom from '../../src/components/Tab';
+import TabCustom from '../Tab';
 import PositionRow from './PositionRow';
 import { Heading } from './Heading';
-import { WrittenOptionsTable } from '../../src/components/WrittenOptionsTable';
+import { WrittenOptionsTable } from '../WrittenOptionsTable';
 import EmptySvg from './EmptySvg';
-import useWallet from '../../src/hooks/useWallet';
-import useOpenPositions from '../../src/hooks/useOpenPositions';
-import useOptionsMarkets from '../../src/hooks/useOptionsMarkets';
-import { useWrittenOptions } from '../../src/hooks/useWrittenOptions';
-import { PricesProvider } from '../../src/context/PricesContext';
-import Page from '../../src/components/pages/Page';
-import SupportedAssetBalances from '../../src/components/SupportedAssetBalances';
+import useWallet from '../../hooks/useWallet';
+import useOpenPositions from '../../hooks/useOpenPositions';
+import useOptionsMarkets from '../../hooks/useOptionsMarkets';
+import { useWrittenOptions } from '../../hooks/useWrittenOptions';
+import { PricesProvider } from '../../context/PricesContext';
+import Page from '../pages/Page';
+import SupportedAssetBalances from '../SupportedAssetBalances';
 
 const OpenPositions: React.VFC = () => {
   const { connected } = useWallet();

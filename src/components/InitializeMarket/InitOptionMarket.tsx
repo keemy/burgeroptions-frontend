@@ -19,18 +19,18 @@ import { BigNumber } from 'bignumber.js';
 import { BN } from 'bn.js';
 import moment from 'moment';
 import { MarketExistsDialog } from './MarketExistsDialog';
-import theme from '../../src/utils/theme';
-import useNotifications from '../../src/hooks/useNotifications';
-import useWallet from '../../src/hooks/useWallet';
-import { useInitializeMarket } from '../../src/hooks/useInitializeMarket';
-import useConnection from '../../src/hooks/useConnection';
-import { useInitializeSerumMarket } from '../../src/hooks/Serum/useInitializeSerumMarket';
-import useAssetList from '../../src/hooks/useAssetList';
-import { useInitializedMarkets } from '../../src/context/LocalStorage';
-import { useCheckIfMarketExists } from '../../src/hooks/PsyOptionsAPI/useCheckIfMarketExists';
-import { StyledTooltip } from '../markets/styles';
-import SelectAsset from '../../src/components/SelectAsset';
-import ConnectButton from '../../src/components/ConnectButton';
+import theme from '../../utils/theme';
+import useNotifications from '../../hooks/useNotifications';
+import useWallet from '../../hooks/useWallet';
+import { useInitializeMarket } from '../../hooks/useInitializeMarket';
+import useConnection from '../../hooks/useConnection';
+import { useInitializeSerumMarket } from '../../hooks/Serum/useInitializeSerumMarket';
+import useAssetList from '../../hooks/useAssetList';
+import { useInitializedMarkets } from '../../context/LocalStorage';
+import { useCheckIfMarketExists } from '../../hooks/PsyOptionsAPI/useCheckIfMarketExists';
+import { StyledTooltip } from '../Markets/styles';
+import SelectAsset from '../SelectAsset';
+import ConnectButton from '../ConnectButton';
 import { Token } from '@mithraic-labs/market-meta/dist/types';
 
 const darkBorder = `1px solid ${theme.palette.background.main}`;
@@ -386,3 +386,5 @@ export const InitOptionMarket: React.VFC = () => {
     </>
   );
 };
+
+export default InitOptionMarket;

@@ -2,8 +2,8 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
 import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';
-import useWallet from '../../src/hooks/useWallet';
-import { useSerumOpenOrders } from '../../src/context/SerumOpenOrdersContext';
+import useWallet from '../../hooks/useWallet';
+import { useSerumOpenOrders } from '../../context/SerumOpenOrdersContext';
 
 const MarketsUnsettledBalances: React.FC = () => {
   const { connected } = useWallet();

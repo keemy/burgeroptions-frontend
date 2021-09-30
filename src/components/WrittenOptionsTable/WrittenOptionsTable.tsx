@@ -2,9 +2,9 @@ import React, { useMemo } from 'react';
 import Box from '@material-ui/core/Box';
 import { useTheme } from '@material-ui/core/styles';
 
-import { Heading } from '../../../pages/portfolio/Heading';
+import { Heading } from '../Portfolio/Heading';
 import { WrittenOptionRow } from './WrittenOptionRow';
-import EmptySvg from '../../../pages/portfolio/EmptySvg';
+import EmptySvg from '../Portfolio/EmptySvg';
 import useWallet from '../../hooks/useWallet';
 import useOpenPositions from '../../hooks/useOpenPositions';
 import { useWrittenOptions } from '../../hooks/useWrittenOptions';

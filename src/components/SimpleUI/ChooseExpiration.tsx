@@ -4,14 +4,11 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { useTheme } from '@material-ui/core/styles';
 import moment from 'moment';
-import {
-  useUpdateForm,
-  useFormState,
-} from '../../../src/context/SimpleUIContext';
-import useExpirationDate from '../../../src/hooks/useExpirationDate';
-import useOptionsChain from '../../../src/hooks/useOptionsChain';
+import { useUpdateForm, useFormState } from '../../context/SimpleUIContext';
+import useExpirationDate from '../../hooks/useExpirationDate';
+import useOptionsChain from '../../hooks/useOptionsChain';
 
-import { SimpleUIPage } from '../../../src/components/SimpleUI/SimpeUIPage';
+import { SimpleUIPage } from './SimpeUIPage';
 
 const ChooseDateButton = ({ date, selected, onClick }) => {
   const theme = useTheme();

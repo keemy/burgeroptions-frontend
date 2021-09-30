@@ -2,8 +2,8 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 import { InitOptionMarket } from './InitOptionMarket';
 import { InitializedMarkets } from './InitializedMarkets';
-import { InitializedMarketsProvider } from '../../src/context/LocalStorage';
-import Page from '../../src/components/pages/Page';
+import { InitializedMarketsProvider } from '../../context/LocalStorage';
+import Page from '../pages/Page';
 
 const InitializeMarket: React.VFC = () => {
   return (

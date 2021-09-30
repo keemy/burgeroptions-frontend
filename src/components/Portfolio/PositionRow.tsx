@@ -8,13 +8,13 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import BigNumber from 'bignumber.js';
 
 import ExerciseDialog from './ExerciseDialog';
-import { OptionMarket, OptionType, TokenAccount } from '../../src/types';
-import useAssetList from '../../src/hooks/useAssetList';
-import { usePrices } from '../../src/context/PricesContext';
+import { OptionMarket, OptionType, TokenAccount } from '../../types';
+import useAssetList from '../../hooks/useAssetList';
+import { usePrices } from '../../context/PricesContext';
 import {
   formatExpirationTimestamp,
   formatExpirationTimestampDate,
-} from '../../src/utils/format';
+} from '../../utils/format';
 
 const useStyles = makeStyles({
   dropdownOpen: {

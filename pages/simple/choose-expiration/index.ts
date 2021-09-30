@@ -1,1 +1,1 @@
-export { default } from './ChooseExpiration';
+export { default } from '../../../src/components/SimpleUI/ChooseExpiration';

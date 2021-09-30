@@ -7,23 +7,23 @@ import Box from '@material-ui/core/Box';
 import moment, { Moment } from 'moment';
 import BigNumber from 'bignumber.js';
 
-import theme from '../../src/utils/theme';
-import useSerum from '../../src/hooks/useSerum';
-import useNotifications from '../../src/hooks/useNotifications';
-import { useImpliedVol } from '../../src/hooks/useImpliedVol';
+import theme from '../../utils/theme';
+import useSerum from '../../hooks/useSerum';
+import useNotifications from '../../hooks/useNotifications';
+import { useImpliedVol } from '../../hooks/useImpliedVol';
 
-import Loading from '../../src/components/Loading';
-import { useSubscribeSerumOrderbook } from '../../src/hooks/Serum';
-import { useSubscribeSPLTokenMint } from '../../src/hooks/SPLToken';
-import { useOptionMarket } from '../../src/hooks/useOptionMarket';
-import { useSerumOrderbooks } from '../../src/context/SerumOrderbookContext';
+import Loading from '../Loading';
+import { useSubscribeSerumOrderbook } from '../../hooks/Serum';
+import { useSubscribeSPLTokenMint } from '../../hooks/SPLToken';
+import { useOptionMarket } from '../../hooks/useOptionMarket';
+import { useSerumOrderbooks } from '../../context/SerumOrderbookContext';
 
-import { useInitializeMarket } from '../../src/hooks/useInitializeMarket';
+import { useInitializeMarket } from '../../hooks/useInitializeMarket';
 
 import { TCell, TCellLoading, TCellStrike, TRow } from './styles';
-import { useMarketData } from '../../src/context/MarketDataContext';
-import { Asset, CallOrPut, OptionType } from '../../src/types';
-import { useSPLTokenMints } from '../../src/context/SPLTokenMintsContext';
+import { useMarketData } from '../../context/MarketDataContext';
+import { Asset, CallOrPut, OptionType } from '../../types';
+import { useSPLTokenMints } from '../../context/SPLTokenMintsContext';
 
 const Empty: React.FC = ({ children }) => (
   <span style={{ opacity: '0.3' }}>{children}</span>

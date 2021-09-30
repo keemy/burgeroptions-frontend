@@ -1,1 +1,1 @@
-export { default } from './OrderSettings';
+export { default } from '../../../src/components/SimpleUI/OrderSettings';

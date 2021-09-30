@@ -4,8 +4,8 @@ import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import React, { useRef } from 'react';
-import { useInitializedMarkets } from '../../src/context/LocalStorage';
-import theme from '../../src/utils/theme';
+import { useInitializedMarkets } from '../../context/LocalStorage';
+import theme from '../../utils/theme';
 
 export const InitializedMarkets: React.VFC = () => {
   const [initializedMarketMeta, setInitializedMarketMeta] =

@@ -5,27 +5,27 @@ import Box from '@material-ui/core/Box';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Button } from '@material-ui/core';
 import moment from 'moment';
-import ConnectButton from '../../../src/components/ConnectButton';
-import { useFormState } from '../../../src/context/SimpleUIContext';
-import { SimpleUIPage } from '../../../src/components/SimpleUI/SimpeUIPage';
+import ConnectButton from '../../ConnectButton';
+import { useFormState } from '../../../context/SimpleUIContext';
+import { SimpleUIPage } from '../SimpeUIPage';
 import OrderDetails from './OrderDetails';
 import LabelledText from './LabelledText';
-import useWallet from '../../../src/hooks/useWallet';
-import useNotifications from '../../../src/hooks/useNotifications';
-import usePlaceBuyOrder from '../../../src/hooks/usePlaceBuyOrder';
-import { getHighestAccount } from '../../../src/utils/token';
-import useOwnedTokenAccounts from '../../../src/hooks/useOwnedTokenAccounts';
-import useFilteredOptionsChain from '../../../src/hooks/useFilteredOptionsChain';
-import useSerum from '../../../src/hooks/useSerum';
-import { useSerumOrderbooks } from '../../../src/context/SerumOrderbookContext';
-import useAssetList from '../../../src/hooks/useAssetList';
-import { useSerumFeeDiscountKey } from '../../../src/hooks/Serum/useSerumFeeDiscountKey';
-import { useOptionMarket } from '../../../src/hooks/useOptionMarket';
-import { calculatePriceWithSlippage } from '../../../src/utils/calculatePriceWithSlippage';
+import useWallet from '../../../hooks/useWallet';
+import useNotifications from '../../../hooks/useNotifications';
+import usePlaceBuyOrder from '../../../hooks/usePlaceBuyOrder';
+import { getHighestAccount } from '../../../utils/token';
+import useOwnedTokenAccounts from '../../../hooks/useOwnedTokenAccounts';
+import useFilteredOptionsChain from '../../../hooks/useFilteredOptionsChain';
+import useSerum from '../../../hooks/useSerum';
+import { useSerumOrderbooks } from '../../../context/SerumOrderbookContext';
+import useAssetList from '../../../hooks/useAssetList';
+import { useSerumFeeDiscountKey } from '../../../hooks/Serum/useSerumFeeDiscountKey';
+import { useOptionMarket } from '../../../hooks/useOptionMarket';
+import { calculatePriceWithSlippage } from '../../../utils/calculatePriceWithSlippage';
 import {
   calculateBreakevenForLimitOrder,
   calculateBreakevenForMarketOrder,
-} from '../../../src/utils/calculateBreakeven';
+} from '../../../utils/calculateBreakeven';
 
 const ConfirmOrder = () => {
   const router = useRouter();

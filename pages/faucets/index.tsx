@@ -88,7 +88,7 @@ const Faucets: React.VFC = () => {
     : 0;
 
   const handleClaimSOL = async () => {
-    if (!endpoint) {
+    if (!endpoint || !pubKey) {
       return;
     }
     setLoadingSOL(true);

@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Box from '@material-ui/core/Box';
-import useFilteredOptionsChain from '../../../src/hooks/useFilteredOptionsChain';
-import {
-  useUpdateForm,
-  useFormState,
-} from '../../../src/context/SimpleUIContext';
+import useFilteredOptionsChain from '../../../hooks/useFilteredOptionsChain';
+import { useUpdateForm, useFormState } from '../../../context/SimpleUIContext';
 import ChooseStrikeButton from './ChooseStrikeButton';
-import { SimpleUIPage } from '../../../src/components/SimpleUI/SimpeUIPage';
+import { SimpleUIPage } from '../SimpeUIPage';
 
 type StrikeButtonData = {
   strike: string;

@@ -1,1 +1,1 @@
-export { default } from './UpOrDown';
+export { default } from '../../../src/components/SimpleUI/UpOrDown';

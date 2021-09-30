@@ -11,7 +11,7 @@ interface WalletAdapter {
   connected: boolean;
   autoApprove: boolean;
 
-  connect(): Promise<void>;
+  connect(args: unknown): Promise<void>;
 
   disconnect(): Promise<void>;
 

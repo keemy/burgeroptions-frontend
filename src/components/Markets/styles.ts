@@ -3,7 +3,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
-import theme from '../../src/utils/theme';
+import theme from '../../utils/theme';
 
 const borderLight = `1px solid ${theme.palette.background.paper}`;
 

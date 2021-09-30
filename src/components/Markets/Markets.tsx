@@ -16,30 +16,26 @@ import { TCellLoading, THeadCell, TCellStrike, PageButton } from './styles';
 import Balances from './MarketsBalances';
 import MarketsUnsettledBalances from './MarketsUnsettledBalances';
 import { MarketsTableHeader } from './MarketsTableHeader';
-import useAssetList from '../../src/hooks/useAssetList';
-import useExpirationDate from '../../src/hooks/useExpirationDate';
-import useOptionsChain from '../../src/hooks/useOptionsChain';
-import useOptionsMarkets from '../../src/hooks/useOptionsMarkets';
-import useSerum from '../../src/hooks/useSerum';
-import { MarketDataProvider } from '../../src/context/MarketDataContext';
-import Page from '../../src/components/pages/Page';
-import BuySellDialog from '../../src/components/BuySellDialog';
-import Select from '../../src/components/Select';
-import { ContractSizeSelector } from '../../src/components/ContractSizeSelector';
-import SelectAsset from '../../src/components/SelectAsset';
-import theme from '../../src/utils/theme';
-import Loading from '../../src/components/Loading';
+import useAssetList from '../../hooks/useAssetList';
+import useExpirationDate from '../../hooks/useExpirationDate';
+import useOptionsChain from '../../hooks/useOptionsChain';
+import useOptionsMarkets from '../../hooks/useOptionsMarkets';
+import useSerum from '../../hooks/useSerum';
+import { MarketDataProvider } from '../../context/MarketDataContext';
+import Page from '../pages/Page';
+import BuySellDialog from '../BuySellDialog';
+import Select from '../Select';
+import { ContractSizeSelector } from '../ContractSizeSelector';
+import SelectAsset from '../SelectAsset';
+import theme from '../../utils/theme';
+import Loading from '../Loading';
 import CallPutRow from './CallPutRow';
-import OpenOrders from '../../src/components/OpenOrders';
-import UnsettledBalancesTable from '../../src/components/UnsettledBalancesTable';
-import { calculateStrikePrecision } from '../../src/utils/getStrikePrices';
-import { useSerumPriceByAssets } from '../../src/hooks/Serum/useSerumPriceByAssets';
-import { useBatchLoadMints } from '../../src/hooks/SPLToken';
-import {
-  CallOrPut,
-  OptionType,
-  SerumMarketAndProgramId,
-} from '../../src/types';
+import OpenOrders from '../OpenOrders';
+import UnsettledBalancesTable from '../UnsettledBalancesTable';
+import { calculateStrikePrecision } from '../../utils/getStrikePrices';
+import { useSerumPriceByAssets } from '../../hooks/Serum/useSerumPriceByAssets';
+import { useBatchLoadMints } from '../../hooks/SPLToken';
+import { CallOrPut, OptionType, SerumMarketAndProgramId } from '../../types';
 
 const dblsp = `${'\u00A0'}${'\u00A0'}`;
 

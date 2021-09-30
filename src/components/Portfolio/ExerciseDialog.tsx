@@ -7,14 +7,14 @@ import { withStyles, useTheme } from '@material-ui/core/styles';
 import { feeAmount } from '@mithraic-labs/psy-american';
 import * as Sentry from '@sentry/react';
 
-import { OptionMarket, OptionType } from '../../src/types';
-import useOwnedTokenAccounts from '../../src/hooks/useOwnedTokenAccounts';
-import useNotifications from '../../src/hooks/useNotifications';
-import useExerciseOpenPosition from '../../src/hooks/useExerciseOpenPosition';
-import DialogFullscreenMobile from '../../src/components/DialogFullscreenMobile';
-import { PlusMinusIntegerInput } from '../../src/components/PlusMinusIntegerInput';
-import TxButton from '../../src/components/TxButton';
-import { useDecimalsForMint } from '../../src/hooks/useDecimalsForMint';
+import { OptionMarket, OptionType } from '../../types';
+import useOwnedTokenAccounts from '../../hooks/useOwnedTokenAccounts';
+import useNotifications from '../../hooks/useNotifications';
+import useExerciseOpenPosition from '../../hooks/useExerciseOpenPosition';
+import DialogFullscreenMobile from '../DialogFullscreenMobile';
+import { PlusMinusIntegerInput } from '../PlusMinusIntegerInput';
+import TxButton from '../TxButton';
+import { useDecimalsForMint } from '../../hooks/useDecimalsForMint';
 
 const StyledTooltip = withStyles((theme) => ({
   tooltip: {

@@ -11,10 +11,10 @@ import { OptionMarketWithKey } from '@mithraic-labs/psy-american';
 import { PublicKey } from '@solana/web3.js';
 import BN from 'bn.js';
 import React, { useCallback, useState } from 'react';
-import { useInitializedMarkets } from '../../src/context/LocalStorage';
-import { useInitializeSerumMarket } from '../../src/hooks/Serum/useInitializeSerumMarket';
-import useAssetList from '../../src/hooks/useAssetList';
-import useConnection from '../../src/hooks/useConnection';
+import { useInitializedMarkets } from '../../context/LocalStorage';
+import { useInitializeSerumMarket } from '../../hooks/Serum/useInitializeSerumMarket';
+import useAssetList from '../../hooks/useAssetList';
+import useConnection from '../../hooks/useConnection';
 
 export const MarketExistsDialog: React.VFC<{
   dismiss: () => void;
@@ -115,3 +115,5 @@ export const MarketExistsDialog: React.VFC<{
     </Dialog>
   );
 };
+
+export default MarketExistsDialog;

@@ -5,18 +5,12 @@ import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
 import Done from '@material-ui/icons/Done';
 import { useTheme } from '@material-ui/core/styles';
-import {
-  useUpdateForm,
-  useFormState,
-} from '../../../src/context/SimpleUIContext';
-import useAssetList from '../../../src/hooks/useAssetList';
-import useFilteredOptionsChain from '../../../src/hooks/useFilteredOptionsChain';
-import {
-  StyledFilledInput,
-  PlusMinusButton,
-} from '../../../src/components/BuySellDialog/styles';
-import { SimpleUIPage } from '../../../src/components/SimpleUI/SimpeUIPage';
-import ChooseStrikeButton from '../choose-strike/ChooseStrikeButton';
+import { useUpdateForm, useFormState } from '../../context/SimpleUIContext';
+import useAssetList from '../../hooks/useAssetList';
+import useFilteredOptionsChain from '../../hooks/useFilteredOptionsChain';
+import { StyledFilledInput, PlusMinusButton } from '../BuySellDialog/styles';
+import { SimpleUIPage } from './SimpeUIPage';
+import ChooseStrikeButton from './ChooseStrike/ChooseStrikeButton';
 
 // #TODO: Make this a global enum, i see BuySellDialog.tsx is using it
 const orderTypes = ['limit', 'market'];

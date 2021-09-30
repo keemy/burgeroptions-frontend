@@ -1,1 +1,1 @@
-export { default } from './InitializeMarket';
+export { default } from '../../src/components/InitializeMarket/InitializeMarket';

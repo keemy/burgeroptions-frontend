@@ -5,10 +5,10 @@ import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import { useTheme } from '@material-ui/core/styles';
 import { Token } from '@mithraic-labs/market-meta/dist/types';
-import useAssetList from '../../../src/hooks/useAssetList';
-import { useSerumPriceByAssets } from '../../../src/hooks/Serum/useSerumPriceByAssets';
-import { useUpdateForm } from '../../../src/context/SimpleUIContext';
-import { SimpleUIPage } from '../../../src/components/SimpleUI/SimpeUIPage';
+import useAssetList from '../../hooks/useAssetList';
+import { useSerumPriceByAssets } from '../../hooks/Serum/useSerumPriceByAssets';
+import { useUpdateForm } from '../../context/SimpleUIContext';
+import { SimpleUIPage } from './SimpeUIPage';
 
 type ChooseAssetButtonProps = {
   asset: Token;

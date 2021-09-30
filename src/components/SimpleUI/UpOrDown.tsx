@@ -5,12 +5,9 @@ import Button from '@material-ui/core/Button';
 import ArrowUpward from '@material-ui/icons/ArrowUpward';
 import ArrowDownward from '@material-ui/icons/ArrowDownward';
 import { useTheme } from '@material-ui/core/styles';
-import {
-  useUpdateForm,
-  useFormState,
-} from '../../../src/context/SimpleUIContext';
+import { useUpdateForm, useFormState } from '../../context/SimpleUIContext';
 
-import { SimpleUIPage } from '../../../src/components/SimpleUI/SimpeUIPage';
+import { SimpleUIPage } from './SimpeUIPage';
 
 const UpOrDownButton = ({ selected, onClick, direction }) => {
   const theme = useTheme();

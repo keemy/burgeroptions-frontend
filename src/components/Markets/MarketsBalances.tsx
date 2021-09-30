@@ -2,10 +2,10 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 import Avatar from '@material-ui/core/Avatar';
 import { LAMPORTS_PER_SOL } from '@solana/web3.js';
-import useWallet from '../../src/hooks/useWallet';
-import useAssetList from '../../src/hooks/useAssetList';
-import useOwnedTokenAccounts from '../../src/hooks/useOwnedTokenAccounts';
-import { getHighestAccount, WRAPPED_SOL_ADDRESS } from '../../src/utils/token';
+import useWallet from '../../hooks/useWallet';
+import useAssetList from '../../hooks/useAssetList';
+import useOwnedTokenAccounts from '../../hooks/useOwnedTokenAccounts';
+import { getHighestAccount, WRAPPED_SOL_ADDRESS } from '../../utils/token';
 
 const Balances: React.FC = () => {
   const { balance, connected } = useWallet();

@@ -1,1 +1,1 @@
-export { default } from './ChooseAnAsset';
+export { default } from '../../../src/components/SimpleUI/ChooseAnAsset';

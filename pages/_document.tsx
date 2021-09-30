@@ -31,7 +31,7 @@ const baseCss = `
     font-family: Goldman, sans-serif;
     font-size: 3.25rem;
     color: ${theme.palette.primary.light};
-    text-shadow: ${theme.glow};
+    text-shadow: ${(theme as any).glow};
   }
   h2 {
     font-size: 1.5rem;
@@ -41,7 +41,7 @@ const baseCss = `
   }
   h4, h5 {
     color: ${theme.palette.primary.light};
-    text-shadow: ${theme.glow};
+    text-shadow: ${(theme as any).glow};
     text-transform: uppercase;
     font-size: 1.25rem;
   }
