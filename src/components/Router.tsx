@@ -58,14 +58,14 @@ const Routes: React.FC<any> = (props) => {
   }
 
   // Checks and routes the user based on whether their country is prohited
-  if (DISALLOWED_COUNTRIES.includes(countryCode)) {
-    return (
-      // @ts-ignore: Router JSX element type does not have any construct or call signatures
-      <Router {...props}>
-        <ProhibitedJurisdiction />
-      </Router>
-    );
-  }
+  // if (DISALLOWED_COUNTRIES.includes(countryCode)) {
+  //   return (
+  //     // @ts-ignore: Router JSX element type does not have any construct or call signatures
+  //     <Router {...props}>
+  //       <ProhibitedJurisdiction />
+  //     </Router>
+  //   );
+  // }
 
   return (
     // @ts-ignore: Router JSX element type does not have any construct or call signatures
